@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class CalenderControl extends GetxController {
   Rx<DateTime> selectedDay = DateTime.now().obs;
