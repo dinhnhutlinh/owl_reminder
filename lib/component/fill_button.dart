@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:owl_reminder/style.dart';
 
+// ignore: must_be_immutable
 class FillButton extends StatelessWidget {
   String text;
   bool isFill;

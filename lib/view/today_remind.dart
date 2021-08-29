@@ -3,42 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:owl_reminder/component/fill_button.dart';
 import 'package:owl_reminder/component/remind_card.dart';
-import 'package:owl_reminder/control/remind_control.dart';
-import 'package:owl_reminder/control/tagcontrol.dart';
+import 'package:owl_reminder/control/todaycontrol.dart';
 import 'package:owl_reminder/model/remind.dart';
 import 'package:owl_reminder/style.dart';
 
+// ignore: must_be_immutable
 class TodayRemind extends StatelessWidget {
-  RemindControl control = Get.put(RemindControl());
-  CategoryControl controlTag = Get.put(CategoryControl());
-
-  get listRemimd => selectedbyTag(
-      controlTag.selectCategory.value, control.getRemindInDay(DateTime.now()));
+  TodayControl controlTag = Get.put(TodayControl());
 
   List<Remind> selectedbyTag(String tag, List<Remind> reminds) =>
       reminds.where((remind) => remind.category.contains(tag)).toList();
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          selectTag(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 5, 5, 0),
-            child: Text('TODAY', style: titleStyle),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: listRemimd.length,
-              itemBuilder: (context, index) => RemindCard(
-                listRemimd[index],
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Obx(() => selectTag()),
+        Padding(
+          padding: EdgeInsets.fromLTRB(10, 5, 5, 0),
+          child: Text('TODAY', style: titleStyle),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: controlTag.remindInDay.length,
+            itemBuilder: (context, index) => RemindCard(
+              controlTag.remindInDay[index],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

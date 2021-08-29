@@ -56,8 +56,7 @@ class _HomePageState extends State<HomePage> {
             FloatingActionButton(
               onPressed: () {
                 Get.to(
-                  EditRemind(Remind(
-                      title: "", category: "", timeTask: DateTime.now())),
+                  EditRemind(1),
                   transition: Transition.rightToLeft,
                 );
               },

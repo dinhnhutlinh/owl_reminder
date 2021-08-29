@@ -5,6 +5,7 @@ import 'package:owl_reminder/component/fill_button.dart';
 import 'package:owl_reminder/model/remind.dart';
 import 'package:owl_reminder/style.dart';
 
+// ignore: must_be_immutable
 class RemindCard extends StatelessWidget {
   Remind remind;
   RemindCard(this.remind);
