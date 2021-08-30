@@ -7,29 +7,29 @@ class TodayControl extends GetxController {
   RxList<String> categorys = <String>[].obs;
   RxString selectCategory = ''.obs;
   RxList<Remind> remindInDay = <Remind>[].obs;
-  RemindTable _table = RemindTable();
+  RemindTable _remindTable = RemindTable();
   CategoryTable _categoryTable = CategoryTable();
   @override
   void onInit() {
     super.onInit();
     categorys.add('Person');
     categorys.add('Word');
-    _table.add(Remind(category: 'iir', title: 'g', timeTask: DateTime.now()));
+    getListCategory();
     getListRemindToday();
+    // update();
   }
 
   Future<List<Remind>> getListRemindToday() async {
-    return await _table
+    return await _remindTable
         .getRemindInSelectDay(DateTime.now())
         .then((value) => remindInDay.value = value);
   }
 
-  add(String category) {
-    if (categorys.contains(category))
-      print('c');
-    else {
-      categorys.add(category);
-      _categoryTable.addCategory(category);
-    }
+  void getListCategory() {
+    _categoryTable.getAllCategory().then(
+          (value) => value.forEach(
+            (category) => categorys.add(category),
+          ),
+        );
   }
 }

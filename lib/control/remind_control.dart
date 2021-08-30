@@ -17,7 +17,7 @@ class RemindControl extends GetxController {
 
   List<DateTime> getAllDayHaveReminder() {
     List<DateTime> dates = [];
-    allRemind.forEach((reminder) => dates.add(reminder.timeTask));
+    allRemind.forEach((reminder) => dates.add(reminder.timeTask!));
     return dates;
   }
 }

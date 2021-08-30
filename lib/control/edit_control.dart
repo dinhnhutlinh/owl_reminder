@@ -14,14 +14,16 @@ class EditControl extends GetxController {
   Color color = Colors.white;
   int repeat = 0;
   int timeBefore = 5;
-
+  int id;
   RemindTable remindTable = RemindTable();
-
-  EditControl();
+  late Remind remind;
+  EditControl(this.id);
 
   @override
-  void onInit() {
-    
+  Future<void> onInit() async {
     super.onInit();
+    remind = await remindTable.findRemindByID(this.id);
+    titleControl.text = remind.title;
+    noteControl.text = remind.note;
   }
 }

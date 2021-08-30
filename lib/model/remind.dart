@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:owl_reminder/db/remindtable.dart';
-import 'package:owl_reminder/main.dart';
-import 'package:owl_reminder/style.dart';
 
 class Remind {
   int? id;
@@ -9,7 +7,7 @@ class Remind {
   String category;
   String note;
   String location;
-  DateTime timeTask;
+  DateTime? timeTask;
   int timeBefore;
   int repeat;
   bool isComplete = false;
@@ -17,11 +15,11 @@ class Remind {
 
   Remind(
       {this.id,
-      required this.title,
-      required this.category,
+      this.title="",
+      this.category="",
       this.note = "",
       this.location = "",
-      required this.timeTask,
+      this.timeTask,
       this.timeBefore = 5,
       this.repeat = 0,
       this.color = Colors.white});

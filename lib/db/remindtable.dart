@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:owl_reminder/db/appdb.dart';
+import 'package:owl_reminder/main.dart';
 import 'package:owl_reminder/model/remind.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -52,7 +52,7 @@ class RemindTable {
     final data = await db.rawQuery(query);
     List<Remind> result = [];
     data.forEach((json) {
-      result.add(Remind.formJSon(json));
+      result.add(Remind.fromJSon(json));
     });
 
     return result;
@@ -67,5 +67,16 @@ class RemindTable {
     List<DateTime> result = [];
     data.forEach((element) => DateTime.parse(element[TIMETASK]));
     return result;
+  }
+
+  Future<Remind> findRemindByID(int id) async {
+    final db = await AppDB.instance.database;
+    final data = await db.query(NAME, where: "id=?", whereArgs: [id]);
+    if (data.isNotEmpty)
+      return Remind.fromJSon(data.first);
+    else {
+      currentID++;
+      return Remind(id: currentID);
+    }
   }
 }

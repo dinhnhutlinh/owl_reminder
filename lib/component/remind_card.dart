@@ -40,7 +40,7 @@ class RemindCard extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 10),
                   child: FillButton(
-                    text: DateFormat('kk:mm dd/MM/yy').format(remind.timeTask),
+                    text: DateFormat('kk:mm dd/MM/yy').format(remind.timeTask!),
                     isFill: false,
                     press: () {},
                   ),

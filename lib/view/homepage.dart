@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:owl_reminder/control/remind_control.dart';
-import 'package:owl_reminder/model/remind.dart';
 import 'package:owl_reminder/style.dart';
 import 'package:owl_reminder/view/calender_remind.dart';
 import 'package:owl_reminder/view/edit_remind.dart';

@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:owl_reminder/control/edit_control.dart';
-import 'package:owl_reminder/model/remind.dart';
 import 'package:owl_reminder/style.dart';
 
 // ignore: must_be_immutable
 class EditRemind extends StatelessWidget {
-  EditControl _editControl;
+  late EditControl _editControl;
 
   EditRemind(int id) {
     _editControl = Get.put(EditControl(id));

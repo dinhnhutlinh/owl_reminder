@@ -1,3 +1,4 @@
+import 'package:owl_reminder/db/catetorytable.dart';
 import 'package:owl_reminder/db/remindtable.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -9,6 +10,7 @@ class AppDB {
 
   static final AppDB instance = AppDB._init();
   AppDB._init();
+
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initDB();
@@ -19,6 +21,7 @@ class AppDB {
     return await openDatabase(join(await getDatabasesPath(), NAME_DB),
         onCreate: (db, version) {
       db.execute(RemindTable.CREATE_TABLE);
+      db.execute(CategoryTable.CREATE_TABLE);
     }, version: 1);
   }
 }

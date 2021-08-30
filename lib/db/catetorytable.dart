@@ -1,5 +1,4 @@
 import 'package:owl_reminder/db/appdb.dart';
-import 'package:sqflite/sqflite.dart';
 
 class CategoryTable {
   static const NAME = 'CategoryTable';
@@ -10,5 +9,12 @@ class CategoryTable {
   Future<void> addCategory(String category) async {
     final db = await AppDB.instance.database;
     db.insert(NAME, {CATEGORY: category});
+  }
+
+  Future<List<String>> getAllCategory() async {
+    final db = await AppDB.instance.database;
+    List<Map<String, Object?>> data = await db.query(NAME);
+
+    return data.map((e) => e[CATEGORY] as String).toList();
   }
 }
