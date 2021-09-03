@@ -14,7 +14,6 @@ class CategoryTable {
   Future<List<String>> getAllCategory() async {
     final db = await AppDB.instance.database;
     List<Map<String, Object?>> data = await db.query(NAME);
-
     return data.map((e) => e[CATEGORY] as String).toList();
   }
 }

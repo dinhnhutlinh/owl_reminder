@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:owl_reminder/control/remind_control.dart';
+import 'package:owl_reminder/main.dart';
 import 'package:owl_reminder/style.dart';
 import 'package:owl_reminder/view/calender_remind.dart';
-import 'package:owl_reminder/view/edit_remind.dart';
+import 'package:owl_reminder/view/edit_remin_paged.dart';
 import 'package:owl_reminder/view/today_remind.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +25,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(),
       body: pages[index],
-      bottomNavigationBar: bottomBar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(EditRemindPage(currentID));
+        },
+        child: Icon(Icons.add),
+      ),
+      // bottomNavigationBar: bottomBar(),
     );
   }
 
@@ -55,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             FloatingActionButton(
               onPressed: () {
                 Get.to(
-                  EditRemind(1),
+                  EditRemindPage(1),
                   transition: Transition.rightToLeft,
                 );
               },

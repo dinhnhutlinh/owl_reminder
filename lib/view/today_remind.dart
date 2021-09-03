@@ -46,7 +46,7 @@ class TodayRemind extends StatelessWidget {
                 text: 'All',
                 isFill: controlTag.selectCategory.string == '',
                 press: () {
-                  controlTag.selectCategory.value = "";
+                  controlTag.selectCategory.value = '';
                 },
                 textStyle: noteStyle,
               ),
