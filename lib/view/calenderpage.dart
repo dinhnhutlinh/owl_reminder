@@ -6,7 +6,7 @@ import 'package:owl_reminder/control/calendercontrol.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 // ignore: must_be_immutable
-class CalenderRemind extends StatelessWidget {
+class CalenderPage extends StatelessWidget {
   CalenderControl calenderControl = Get.put(CalenderControl());
 
   @override

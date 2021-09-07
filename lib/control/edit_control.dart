@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:owl_reminder/db/catetorytable.dart';
 import 'package:owl_reminder/db/remindtable.dart';
 import 'package:owl_reminder/model/remind.dart';
 
@@ -16,6 +17,7 @@ class EditControl extends GetxController {
   int timeBefore = 5;
   int id;
   RemindTable remindTable = RemindTable();
+  CategoryTable categoryTable = CategoryTable();
   late Remind remind;
   EditControl(this.id);
 
@@ -25,5 +27,6 @@ class EditControl extends GetxController {
     remind = await remindTable.findRemindByID(this.id);
     titleControl.text = remind.title;
     noteControl.text = remind.note;
+   
   }
 }

@@ -12,8 +12,6 @@ class TodayControl extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    categorys.add('Person');
-    categorys.add('Word');
     getListCategory();
     getListRemindToday();
     // update();

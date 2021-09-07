@@ -8,7 +8,7 @@ import 'package:owl_reminder/model/remind.dart';
 import 'package:owl_reminder/style.dart';
 
 // ignore: must_be_immutable
-class TodayRemind extends StatelessWidget {
+class TodayPage extends StatelessWidget {
   TodayControl controlTag = Get.put(TodayControl());
 
   List<Remind> selectedbyTag(String tag, List<Remind> reminds) =>
