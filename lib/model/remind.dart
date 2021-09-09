@@ -7,7 +7,7 @@ class Remind {
   String category;
   String note;
   String location;
-  DateTime? timeTask;
+  DateTime timeTask;
   int timeBefore;
   int repeat;
   bool isComplete = false;
@@ -15,11 +15,11 @@ class Remind {
 
   Remind(
       {this.id,
-      this.title="",
-      this.category="",
+      required this.title,
+      this.category = "",
       this.note = "",
       this.location = "",
-      this.timeTask,
+      required this.timeTask,
       this.timeBefore = 5,
       this.repeat = 0,
       this.color = Colors.white});

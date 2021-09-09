@@ -76,7 +76,10 @@ class RemindTable {
       return Remind.fromJSon(data.first);
     else {
       currentID++;
-      return Remind(id: currentID);
+      return Remind(
+          id: currentID,
+          title: '',
+          timeTask: DateTime.now().add(Duration(hours: 6)));
     }
   }
 }

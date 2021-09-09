@@ -19,7 +19,7 @@ class TodayPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Obx(() => selectTag()),
+        Obx(() => _selectTag()),
         Padding(
           padding: EdgeInsets.fromLTRB(10, 5, 5, 0),
           child: Text('TODAY', style: titleStyle),
@@ -36,7 +36,7 @@ class TodayPage extends StatelessWidget {
     );
   }
 
-  Widget selectTag() => Row(
+  Widget _selectTag() => Row(
         children: [
           SizedBox(
             height: 45,

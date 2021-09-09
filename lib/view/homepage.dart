@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
     TodayPage(),
     CalenderPage(),
     TodayPage(),
-    CalenderPage(),
   ];
 
   @override

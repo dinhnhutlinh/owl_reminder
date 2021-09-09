@@ -1,23 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:owl_reminder/control/edit_control.dart';
-import 'package:owl_reminder/dialog/category_dialog.dart';
+import 'package:owl_reminder/dialog/category_picker.dart';
+import 'package:owl_reminder/dialog/color_picker.dart';
+import 'package:owl_reminder/dialog/repeat_picker.dart';
 import 'package:owl_reminder/style.dart';
 
 // ignore: must_be_immutable
-class EditRemindPage extends StatelessWidget {
-  EditControl? _editControl;
+class EditRemindPage extends StatefulWidget {
+  int id;
 
-  EditRemindPage(int id) {
-    _editControl = Get.put(EditControl(id));
+  EditRemindPage(this.id);
+
+  @override
+  _EditRemindPageState createState() => _EditRemindPageState();
+}
+
+class _EditRemindPageState extends State<EditRemindPage> {
+  EditControl? _editControl;
+  @override
+  void initState() {
+    _editControl = EditControl(widget.id);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Colors.yellow[200],
+        backgroundColor: _editControl!.color,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           iconTheme: IconThemeData(color: darkGray),
@@ -96,7 +107,7 @@ class EditRemindPage extends StatelessWidget {
           title: Text('Category'),
           trailing: Chip(label: Text("kdjdjdj")),
           onTap: () async {
-            String? t =await Get.dialog<String>(
+            String? t = await Get.dialog<String>(
               CategoryDiaLog('word'),
             );
             print(t);
@@ -106,21 +117,37 @@ class EditRemindPage extends StatelessWidget {
           thickness: 1,
           height: 1,
         ),
-        ListTile(
-          leading: LineIcon.clock(),
-          title: Text('Time'),
-          trailing: Chip(label: Text("kdjdjdj")),
-          onTap: () {},
+        Builder(
+          builder: (context) => ListTile(
+            leading: LineIcon.clock(),
+            title: Text('Time'),
+            trailing: Chip(label: Text("kdjdjdj")),
+            onTap: () async {
+              TimeOfDay? time = await showTimePicker(
+                  context: context, initialTime: _editControl!.time);
+              if (time != null) print(time);
+            },
+          ),
         ),
         Divider(
           thickness: 1,
           height: 1,
         ),
-        ListTile(
-          leading: LineIcon.calendar(),
-          title: Text('Date'),
-          trailing: Chip(label: Text("kdjdjdj")),
-          onTap: () {},
+        Builder(
+          builder: (context) => ListTile(
+            leading: LineIcon.calendar(),
+            title: Text('Date'),
+            trailing: Chip(label: Text("kdjdjdj")),
+            onTap: () async {
+              DateTime? date = await showDatePicker(
+                  context: context,
+                  initialDate: _editControl!.dateTime,
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime(2099));
+              if (date != null) _editControl!.setDate(date);
+              setState(() {});
+            },
+          ),
         ),
         Divider(
           thickness: 1,
@@ -140,7 +167,10 @@ class EditRemindPage extends StatelessWidget {
           leading: LineIcon.syncIcon(),
           title: Text('Repeat'),
           trailing: Chip(label: Text("kdjdjdj")),
-          onTap: () {},
+          onTap: () async {
+            int? repeat = await Get.dialog(RepeatDialog(_editControl!.repeat));
+            setState(() {});
+          },
         ),
         Divider(
           thickness: 1,
@@ -150,7 +180,13 @@ class EditRemindPage extends StatelessWidget {
           leading: LineIcon.circle(),
           title: Text('Color'),
           trailing: Chip(label: Text("kdjdjdj")),
-          onTap: () {},
+          onTap: () async {
+            var color = await Get.dialog(ColorPicker(_editControl!.color));
+
+            setState(() {
+              if (color != null) _editControl!.setColor(color);
+            });
+          },
         ),
         Divider(
           thickness: 1,
