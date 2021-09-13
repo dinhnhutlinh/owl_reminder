@@ -10,6 +10,7 @@ const Color darkGray = Color.fromARGB(255, 52, 58, 64);
 const Color gray = Color.fromARGB(255, 108, 117, 125);
 const Color light = Color.fromARGB(255, 248, 249, 250);
 const Color white = Color.fromARGB(255, 255, 255, 255);
+final Color lighGrey = Colors.grey.withOpacity(0.5);
 
 AppBarTheme _appBarTheme = AppBarTheme(
   centerTitle: true,
@@ -27,6 +28,13 @@ FloatingActionButtonThemeData _floatThemeData = FloatingActionButtonThemeData(
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
+  appBarTheme: _appBarTheme,
+  backgroundColor: white,
+  accentColorBrightness: Brightness.light,
+  floatingActionButtonTheme: _floatThemeData,
+);
+ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
   appBarTheme: _appBarTheme,
   backgroundColor: white,
   accentColorBrightness: Brightness.light,

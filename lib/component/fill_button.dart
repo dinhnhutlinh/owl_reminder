@@ -25,7 +25,7 @@ class FillButton extends StatelessWidget {
       child: Text(text,maxLines: 1,),
       style: ButtonStyle(
         backgroundColor:
-            MaterialStateProperty.all(isFill ? color : Colors.transparent),
+            MaterialStateProperty.all(isFill ? color : Colors.white),
         foregroundColor: MaterialStateProperty.all<Color>(!isFill ? color : Colors.white),
         alignment: Alignment.center,
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(

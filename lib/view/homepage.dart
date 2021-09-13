@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:owl_reminder/control/homepagecontrol.dart';
-import 'package:owl_reminder/main.dart';
 import 'package:owl_reminder/style.dart';
 import 'package:owl_reminder/view/calenderpage.dart';
-import 'package:owl_reminder/view/editremindpaged.dart';
+import 'package:owl_reminder/view/edit_page.dart';
 import 'package:owl_reminder/view/todaypage.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,7 +28,7 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(EditRemindPage(currentID),transition: Transition.rightToLeft);
+          Get.to(EditRemindPage(), transition: Transition.rightToLeft);
         },
         child: Icon(Icons.add),
       ),

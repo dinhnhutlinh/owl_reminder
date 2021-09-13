@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
 
+import '../style.dart';
+
 class ColorPicker extends StatelessWidget {
   Color currentColor;
   ColorPicker(this.currentColor);
@@ -50,15 +52,40 @@ class ColorPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('Select Color'),
-      content: SizedBox(
-        height: Get.height * 0.25,
-        child: GridView.count(
-          crossAxisCount: 4,
-          children: List.generate(colors.length, (index) => colorCircle(index)),
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      child: SizedBox(
+        width: Get.width * 0.8,
+        height: Get.height * 0.4,
+        child: Column(
+          children: [
+            _title(),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: GridView.count(
+                  crossAxisCount: 4,
+                  children: List.generate(
+                      colors.length, (index) => colorCircle(index)),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _title() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+        color: yellow,
+      ),
+      alignment: Alignment.center,
+      height: 45,
+      child: Text('Select Color'),
     );
   }
 

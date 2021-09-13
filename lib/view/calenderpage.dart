@@ -5,12 +5,12 @@ import 'package:owl_reminder/component/remind_card.dart';
 import 'package:owl_reminder/control/calendercontrol.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-// ignore: must_be_immutable
 class CalenderPage extends StatelessWidget {
   CalenderControl calenderControl = Get.put(CalenderControl());
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
         TableCalendar(
